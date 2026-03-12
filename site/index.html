@@ -866,6 +866,93 @@ footer{
   .footer-g{grid-template-columns:1fr}
 }
 
+/* ─── JOURNEY ROAD (vertical route left side) ── */
+.journey-road{
+  position:fixed;left:28px;top:0;bottom:0;width:44px;z-index:90;
+  pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;
+}
+.jr-line{
+  position:absolute;top:90px;bottom:40px;width:2px;
+  background:repeating-linear-gradient(180deg,
+    rgba(34,197,94,.15) 0,rgba(34,197,94,.15) 8px,
+    transparent 8px,transparent 20px
+  );
+}
+.jr-line-progress{
+  position:absolute;top:90px;width:2px;height:0;
+  background:linear-gradient(180deg,var(--green),rgba(34,197,94,.3));
+  transition:height .12s linear;
+  box-shadow:0 0 8px rgba(34,197,94,.3);
+}
+.jr-car{
+  position:absolute;left:50%;transform:translateX(-50%);
+  top:80px;z-index:2;
+  filter:drop-shadow(0 0 10px rgba(34,197,94,.6));
+  transition:top .12s linear;
+}
+.jr-waypoint{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;
+  pointer-events:auto;cursor:pointer;
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.jr-waypoint:hover{transform:translateX(-50%) scale(1.2)}
+.jr-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--card2);border:2px solid rgba(255,255,255,.08);
+  transition:all .4s cubic-bezier(.16,1,.3,1);
+  position:relative;flex-shrink:0;
+}
+.jr-dot::after{
+  content:'';position:absolute;inset:-5px;border-radius:50%;
+  border:1.5px solid transparent;transition:border-color .3s;
+}
+.jr-waypoint.active .jr-dot{
+  background:var(--green);border-color:var(--green);
+  box-shadow:0 0 14px rgba(34,197,94,.5);
+}
+.jr-waypoint.active .jr-dot::after{border-color:rgba(34,197,94,.2)}
+.jr-waypoint.passed .jr-dot{
+  background:rgba(34,197,94,.4);border-color:rgba(34,197,94,.3);
+}
+.jr-label{
+  font-size:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--dim2);white-space:nowrap;
+  position:absolute;left:20px;
+  opacity:0;transition:opacity .3s,color .3s;
+  pointer-events:none;
+}
+.jr-waypoint:hover .jr-label,.jr-waypoint.active .jr-label{
+  opacity:1;color:var(--green);
+}
+
+/* ─── SECTION CINEMATICS ─────────────────────── */
+.sec-cinema{
+  opacity:0;
+  transform:translateY(50px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),
+             transform .9s cubic-bezier(.16,1,.3,1);
+  will-change:opacity,transform;
+}
+.sec-cinema.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Adjust body for journey road space */
+@media(min-width:881px){
+  body{padding-left:80px}
+  .journey-road{display:flex}
+  nav{left:80px}
+  .scroll-progress{left:80px}
+  .sticky{left:80px}
+}
+@media(max-width:880px){
+  .journey-road{display:none}
+  body{padding-left:0}
+}
+
 /* ─── LOADER ─────────────────────────────────── */
 .loader{
   position:fixed;inset:0;z-index:9999;
@@ -1150,6 +1237,41 @@ nav.s{
       <circle cx="3.5" cy="6.5" r="1" fill="#fff"/>
       <circle cx="10.5" cy="6.5" r="1" fill="#fff"/>
     </svg>
+  </div>
+</div>
+
+<!-- JOURNEY ROAD -->
+<div class="journey-road" id="journeyRoad">
+  <div class="jr-line"></div>
+  <div class="jr-line-progress" id="jrProgress"></div>
+  <svg class="jr-car" id="jrCar" width="18" height="26" viewBox="0 0 18 26" fill="none">
+    <rect x="3" y="2" width="12" height="22" rx="4" fill="#22C55E"/>
+    <rect x="5" y="4" width="8" height="6" rx="2" fill="rgba(255,255,255,.25)"/>
+    <rect x="5" y="16" width="8" height="4" rx="1.5" fill="rgba(255,255,255,.15)"/>
+    <circle cx="5" cy="24" r="2" fill="rgba(255,255,255,.6)"/>
+    <circle cx="13" cy="24" r="2" fill="rgba(255,255,255,.6)"/>
+    <circle cx="5" cy="2" r="2" fill="rgba(255,255,255,.6)"/>
+    <circle cx="13" cy="2" r="2" fill="rgba(255,255,255,.6)"/>
+    <rect x="1" y="8" width="2" height="3" rx="1" fill="rgba(34,197,94,.5)"/>
+    <rect x="15" y="8" width="2" height="3" rx="1" fill="rgba(34,197,94,.5)"/>
+  </svg>
+  <div class="jr-waypoint" data-target="hero" style="top:10%">
+    <div class="jr-dot"></div><span class="jr-label">Départ</span>
+  </div>
+  <div class="jr-waypoint" data-target="chauffeurs" style="top:25%">
+    <div class="jr-dot"></div><span class="jr-label">Chauffeurs</span>
+  </div>
+  <div class="jr-waypoint" data-target="aibd" style="top:42%">
+    <div class="jr-dot"></div><span class="jr-label">AIBD</span>
+  </div>
+  <div class="jr-waypoint" data-target="navette" style="top:55%">
+    <div class="jr-dot"></div><span class="jr-label">Régions</span>
+  </div>
+  <div class="jr-waypoint" data-target="signup" style="top:70%">
+    <div class="jr-dot"></div><span class="jr-label">Inscription</span>
+  </div>
+  <div class="jr-waypoint" data-target="faq" style="top:85%">
+    <div class="jr-dot"></div><span class="jr-label">FAQ</span>
   </div>
 </div>
 
@@ -1928,10 +2050,57 @@ setTimeout(()=>{
 
 /* ─── SCROLL PROGRESS CAR ────────────────────── */
 const scrollRoad=document.getElementById('scrollRoad');
+
+/* ─── JOURNEY ROAD SYSTEM ────────────────────── */
+const jrCar=document.getElementById('jrCar');
+const jrProgress=document.getElementById('jrProgress');
+const waypoints=document.querySelectorAll('.jr-waypoint');
+const roadTop=90; /* px from top */
+const roadBottom=window.innerHeight-40;
+const roadHeight=roadBottom-roadTop;
+
+/* Waypoint click → scroll to section */
+waypoints.forEach(wp=>{
+  wp.addEventListener('click',()=>{
+    const target=document.getElementById(wp.dataset.target);
+    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* Cinematic section observer */
+const cinemaObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('in-view');
+  });
+},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+
+/* Apply sec-cinema to all main sections */
+document.querySelectorAll('.sec,.aibd-sec,.navette-sec,.form-sec,.compare-sec,.faq-sec,.stats-band').forEach(el=>{
+  el.classList.add('sec-cinema');
+  cinemaObs.observe(el);
+});
+
+/* Combined scroll handler */
 window.addEventListener('scroll',()=>{
   const h=document.documentElement.scrollHeight-window.innerHeight;
   const pct=h>0?(scrollY/h)*100:0;
   scrollRoad.style.width=pct+'%';
+
+  /* Journey road car + progress */
+  const carPos=roadTop+(pct/100)*roadHeight;
+  if(jrCar) jrCar.style.top=carPos+'px';
+  if(jrProgress) jrProgress.style.height=(pct/100)*roadHeight+'px';
+
+  /* Update waypoints */
+  waypoints.forEach(wp=>{
+    const target=document.getElementById(wp.dataset.target);
+    if(!target) return;
+    const rect=target.getBoundingClientRect();
+    const inView=rect.top<window.innerHeight*0.5 && rect.bottom>0;
+    const passed=rect.bottom<window.innerHeight*0.3;
+    wp.classList.toggle('active',inView && !passed);
+    wp.classList.toggle('passed',passed);
+  });
 },{passive:true});
 
 /* ─── CURSOR GLOW ────────────────────────────── */
