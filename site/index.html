@@ -865,9 +865,293 @@ footer{
   .btn-g,.btn-o{justify-content:center;width:100%}
   .footer-g{grid-template-columns:1fr}
 }
+
+/* ─── LOADER ─────────────────────────────────── */
+.loader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--black);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .6s ease,visibility .6s;
+}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-road{
+  width:280px;height:4px;background:var(--card2);border-radius:4px;
+  position:relative;overflow:hidden;margin-top:32px;
+}
+.loader-road::before{
+  content:'';position:absolute;top:50%;left:0;right:0;
+  height:1px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0,rgba(255,255,255,.3) 8px,transparent 8px,transparent 20px);
+}
+.loader-car{
+  position:absolute;top:50%;transform:translateY(-50%);
+  left:-24px;
+  animation:loaderDrive 1.8s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes loaderDrive{
+  0%{left:-24px}
+  60%{left:75%}
+  100%{left:calc(100% + 24px)}
+}
+.loader-logo{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:32px;
+  letter-spacing:-1px;opacity:0;
+  animation:loaderFade .8s .3s ease forwards;
+}
+.loader-logo b{color:var(--green)}
+@keyframes loaderFade{to{opacity:1}}
+.loader-sub{
+  font-size:12px;color:var(--dim);letter-spacing:3px;text-transform:uppercase;
+  margin-top:8px;opacity:0;
+  animation:loaderFade .6s .6s ease forwards;
+}
+
+/* ─── SCROLL PROGRESS CAR ────────────────────── */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:101;
+  background:rgba(255,255,255,.03);
+}
+.scroll-road{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--green),rgba(34,197,94,.4));
+  transition:width .1s linear;
+  position:relative;
+}
+.scroll-car{
+  position:absolute;right:-6px;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;
+  filter:drop-shadow(0 0 6px rgba(34,197,94,.8));
+  transition:right .1s linear;
+}
+
+/* ─── FLOATING PARTICLES ─────────────────────── */
+.particles{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+.particle{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,197,94,.3),transparent 70%);
+  animation:float linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-100px) rotate(720deg);opacity:0}
+}
+
+/* ─── ROAD DIVIDERS ──────────────────────────── */
+.road-divider{
+  height:80px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.road-line{
+  width:100%;max-width:600px;height:2px;
+  background:repeating-linear-gradient(90deg,
+    rgba(34,197,94,.3) 0,rgba(34,197,94,.3) 16px,
+    transparent 16px,transparent 32px
+  );
+  position:relative;
+}
+.road-car-anim{
+  position:absolute;top:50%;transform:translateY(-50%);
+  animation:roadCarDrive 4s ease-in-out infinite;
+}
+@keyframes roadCarDrive{
+  0%{left:-20px;opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{left:calc(100% + 20px);opacity:0}
+}
+
+/* ─── GLASSMORPHISM ──────────────────────────── */
+.aibd-card,.fcard,.faq,.ccard,.step-vis,.course-card{
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.aibd-card{
+  background:rgba(26,28,32,.7);
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.aibd-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 30px rgba(34,197,94,.05);
+}
+.faq{
+  background:rgba(26,28,32,.6);
+  transition:border-color .3s,transform .2s;
+}
+.faq:hover{transform:translateY(-2px);border-color:var(--line2)}
+
+/* ─── ENHANCED REVEALS ───────────────────────── */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{
+  opacity:0;
+  transform:translateX(-60px);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{
+  opacity:0;
+  transform:translateX(60px);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{
+  opacity:0;
+  transform:scale(.85);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* stagger children */
+.stagger > *{
+  opacity:0;transform:translateY(24px);
+  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+}
+.stagger.visible > *:nth-child(1){transition-delay:.05s}
+.stagger.visible > *:nth-child(2){transition-delay:.1s}
+.stagger.visible > *:nth-child(3){transition-delay:.15s}
+.stagger.visible > *:nth-child(4){transition-delay:.2s}
+.stagger.visible > *:nth-child(5){transition-delay:.25s}
+.stagger.visible > *:nth-child(6){transition-delay:.3s}
+.stagger.visible > *{opacity:1;transform:translateY(0)}
+
+/* ─── HERO ENHANCED ──────────────────────────── */
+.hero-car-scene{
+  position:absolute;bottom:0;left:0;right:0;height:120px;
+  z-index:1;overflow:hidden;pointer-events:none;
+}
+.hero-road-surface{
+  position:absolute;bottom:0;left:0;right:0;height:40px;
+  background:linear-gradient(180deg,transparent,rgba(34,197,94,.03));
+  border-top:2px solid rgba(34,197,94,.08);
+}
+.hero-road-marks{
+  position:absolute;bottom:18px;left:0;right:0;height:2px;
+  background:repeating-linear-gradient(90deg,
+    rgba(255,255,255,.15) 0,rgba(255,255,255,.15) 24px,
+    transparent 24px,transparent 56px
+  );
+  animation:roadScroll 3s linear infinite;
+}
+@keyframes roadScroll{0%{transform:translateX(0)}100%{transform:translateX(-56px)}}
+.hero-moving-car{
+  position:absolute;bottom:6px;
+  animation:heroCarFloat 6s ease-in-out infinite;
+}
+.hero-car-1{left:15%;animation-delay:0s}
+.hero-car-2{left:55%;animation-delay:2s}
+.hero-car-3{left:80%;animation-delay:4s}
+@keyframes heroCarFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+.hero-car-glow{
+  position:absolute;bottom:8px;width:60px;height:20px;
+  background:radial-gradient(ellipse,rgba(34,197,94,.15),transparent 70%);
+  border-radius:50%;
+}
+
+/* ─── SMOOTH NAV ─────────────────────────────── */
+nav{
+  transition:background .5s cubic-bezier(.16,1,.3,1),
+             border-color .5s cubic-bezier(.16,1,.3,1),
+             box-shadow .5s cubic-bezier(.16,1,.3,1);
+}
+nav.s{
+  box-shadow:0 4px 30px rgba(0,0,0,.3);
+}
+
+/* ─── ENHANCED BUTTONS ───────────────────────── */
+.btn-g{
+  position:relative;overflow:hidden;
+}
+.btn-g::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.1) 50%,transparent 70%);
+  transform:translateX(-100%);
+  transition:transform .5s;
+}
+.btn-g:hover::after{transform:translateX(100%)}
+
+/* ─── STAT COUNTER ANIM ─────────────────────── */
+.stat-v{
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.stat-v.counting{
+  animation:countPulse .15s ease;
+}
+@keyframes countPulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+/* ─── PHONE TILT ─────────────────────────────── */
+.phone{
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+.phone-wrap:hover .phone{
+  transform:perspective(800px) rotateY(-5deg) rotateX(3deg) scale(1.02);
+}
+
+/* ─── CURSOR GLOW ────────────────────────────── */
+.cursor-glow{
+  position:fixed;pointer-events:none;z-index:9998;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,197,94,.04) 0%,transparent 60%);
+  transform:translate(-50%,-50%);
+  transition:left .3s ease,top .3s ease;
+  display:none;
+}
+@media(hover:hover){.cursor-glow{display:block}}
+
+/* ─── COMPARE ENHANCED ──────────────────────── */
+.compare-sec .sh{text-align:center}
+.compare-sec .stag{text-align:center;display:block}
+
 </style>
 </head>
 <body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">Yokh<b>Laa</b></div>
+  <div class="loader-sub">Dakar sans commission</div>
+  <div class="loader-road">
+    <div class="loader-car">
+      <svg width="24" height="14" viewBox="0 0 24 14" fill="none">
+        <path d="M3 8h1l2-4h8l3 4h4a2 2 0 0 1 0 4h-1.1a2.5 2.5 0 0 1-4.8 0H8.9a2.5 2.5 0 0 1-4.8 0H3a2 2 0 0 1 0-4z" fill="#22C55E"/>
+        <circle cx="6.5" cy="12" r="1.5" fill="#fff"/>
+        <circle cx="17.5" cy="12" r="1.5" fill="#fff"/>
+        <rect x="7" y="5" width="3" height="2.5" rx=".5" fill="rgba(255,255,255,.4)"/>
+        <rect x="11" y="5" width="3" height="2.5" rx=".5" fill="rgba(255,255,255,.4)"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- CURSOR GLOW -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress">
+  <div class="scroll-road" id="scrollRoad">
+    <svg class="scroll-car" viewBox="0 0 14 8" fill="none">
+      <path d="M1 4h1l1.5-3h5l2 3h2.5a1 1 0 0 1 0 2H12a1.5 1.5 0 0 1-3 0H5a1.5 1.5 0 0 1-3 0H1a1 1 0 0 1 0-2z" fill="#22C55E"/>
+      <circle cx="3.5" cy="6.5" r="1" fill="#fff"/>
+      <circle cx="10.5" cy="6.5" r="1" fill="#fff"/>
+    </svg>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -901,6 +1185,22 @@ footer{
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
+  <!-- Animated cars on road at bottom of hero -->
+  <div class="hero-car-scene">
+    <div class="hero-road-surface"></div>
+    <div class="hero-road-marks"></div>
+    <div class="hero-moving-car hero-car-1">
+      <svg width="32" height="16" viewBox="0 0 24 14" fill="none"><path d="M3 8h1l2-4h8l3 4h4a2 2 0 0 1 0 4h-1.1a2.5 2.5 0 0 1-4.8 0H8.9a2.5 2.5 0 0 1-4.8 0H3a2 2 0 0 1 0-4z" fill="#22C55E" opacity=".6"/><circle cx="6.5" cy="12" r="1.5" fill="rgba(255,255,255,.5)"/><circle cx="17.5" cy="12" r="1.5" fill="rgba(255,255,255,.5)"/></svg>
+    </div>
+    <div class="hero-car-glow" style="left:16%"></div>
+    <div class="hero-moving-car hero-car-2">
+      <svg width="28" height="14" viewBox="0 0 24 14" fill="none"><path d="M3 8h1l2-4h8l3 4h4a2 2 0 0 1 0 4h-1.1a2.5 2.5 0 0 1-4.8 0H8.9a2.5 2.5 0 0 1-4.8 0H3a2 2 0 0 1 0-4z" fill="rgba(255,255,255,.15)"/><circle cx="6.5" cy="12" r="1.5" fill="rgba(255,255,255,.25)"/><circle cx="17.5" cy="12" r="1.5" fill="rgba(255,255,255,.25)"/></svg>
+    </div>
+    <div class="hero-car-glow" style="left:56%"></div>
+    <div class="hero-moving-car hero-car-3">
+      <svg width="26" height="13" viewBox="0 0 24 14" fill="none"><path d="M3 8h1l2-4h8l3 4h4a2 2 0 0 1 0 4h-1.1a2.5 2.5 0 0 1-4.8 0H8.9a2.5 2.5 0 0 1-4.8 0H3a2 2 0 0 1 0-4z" fill="rgba(34,197,94,.3)"/><circle cx="6.5" cy="12" r="1.5" fill="rgba(255,255,255,.35)"/><circle cx="17.5" cy="12" r="1.5" fill="rgba(255,255,255,.35)"/></svg>
+    </div>
+  </div>
   <div class="wrap">
     <div class="hero-inner">
 
@@ -1079,6 +1379,15 @@ footer{
     </div>
   </div>
 </section>
+
+<!-- ROAD DIVIDER -->
+<div class="road-divider">
+  <div class="road-line">
+    <div class="road-car-anim">
+      <svg width="16" height="10" viewBox="0 0 24 14" fill="none"><path d="M3 8h1l2-4h8l3 4h4a2 2 0 0 1 0 4h-1.1a2.5 2.5 0 0 1-4.8 0H8.9a2.5 2.5 0 0 1-4.8 0H3a2 2 0 0 1 0-4z" fill="#22C55E"/><circle cx="6.5" cy="12" r="1.5" fill="#fff"/><circle cx="17.5" cy="12" r="1.5" fill="#fff"/></svg>
+    </div>
+  </div>
+</div>
 
 <!-- AIBD -->
 <section class="sec aibd-sec" id="aibd">
@@ -1612,20 +1921,136 @@ function submitForm(){
   }
 }
 
-/* Scroll reveal */
-const rObs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
+/* ─── LOADER ─────────────────────────────────── */
+setTimeout(()=>{
+  document.getElementById('loader').classList.add('done');
+},2200);
+
+/* ─── SCROLL PROGRESS CAR ────────────────────── */
+const scrollRoad=document.getElementById('scrollRoad');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=h>0?(scrollY/h)*100:0;
+  scrollRoad.style.width=pct+'%';
+},{passive:true});
+
+/* ─── CURSOR GLOW ────────────────────────────── */
+const cursorGlow=document.getElementById('cursorGlow');
+if(window.matchMedia('(hover:hover)').matches){
+  document.addEventListener('mousemove',e=>{
+    cursorGlow.style.left=e.clientX+'px';
+    cursorGlow.style.top=e.clientY+'px';
+  },{passive:true});
+}
+
+/* ─── FLOATING PARTICLES ─────────────────────── */
+(function initParticles(){
+  const container=document.getElementById('particles');
+  const count=15;
+  for(let i=0;i<count;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*4+2;
+    p.style.width=size+'px';
+    p.style.height=size+'px';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDuration=(Math.random()*20+15)+'s';
+    p.style.animationDelay=(Math.random()*20)+'s';
+    container.appendChild(p);
+  }
+})();
+
+/* ─── ENHANCED SCROLL REVEAL ─────────────────── */
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
     if(e.isIntersecting){
-      setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)'},i%4*70);
-      rObs.unobserve(e.target);
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
     }
   });
-},{threshold:.08});
-document.querySelectorAll('.faq,.aibd-card,.navette-feat,.step,.stat,.trust-item').forEach(el=>{
-  el.style.opacity='0';
-  el.style.transform='translateY(22px)';
-  el.style.transition='opacity .6s ease,transform .6s ease';
-  rObs.observe(el);
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+
+/* Appliquer les classes reveal aux éléments */
+document.querySelectorAll('.sh,.stag,.sp').forEach(el=>{
+  el.classList.add('reveal');
+  revealObs.observe(el);
+});
+document.querySelectorAll('.aibd-grid,.steps-grid,.compare-grid,.faq-grid,.navette-feats,.trust-list').forEach(el=>{
+  el.classList.add('stagger');
+  revealObs.observe(el);
+});
+document.querySelectorAll('.aibd-card,.faq,.step,.stat,.trust-item,.navette-feat,.ccard').forEach(el=>{
+  el.classList.add('reveal');
+  revealObs.observe(el);
+});
+document.querySelectorAll('.aibd-steps,.step-vis,.fcard,.counter-bar').forEach(el=>{
+  el.classList.add('reveal-scale');
+  revealObs.observe(el);
+});
+document.querySelectorAll('.navette-map,.phone-wrap').forEach(el=>{
+  el.classList.add('reveal-right');
+  revealObs.observe(el);
+});
+
+/* ─── ANIMATED STAT COUNTERS ─────────────────── */
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const text=el.dataset.val||el.textContent;
+      const numMatch=text.match(/([\d\s,.]+)/);
+      if(numMatch){
+        const target=parseFloat(numMatch[1].replace(/\s/g,'').replace(',','.'));
+        const prefix=text.slice(0,text.indexOf(numMatch[1]));
+        const suffix=text.slice(text.indexOf(numMatch[1])+numMatch[1].length);
+        const isDecimal=numMatch[1].includes(',');
+        const duration=1200;
+        const start=performance.now();
+        function tick(now){
+          const p=Math.min((now-start)/duration,1);
+          const eased=1-Math.pow(1-p,4);
+          let val=eased*target;
+          if(isDecimal) val=val.toFixed(1).replace('.',',');
+          else val=Math.round(val).toLocaleString('fr-FR').replace(/\u202f/g,' ');
+          el.textContent=prefix+val+suffix;
+          if(p<1)requestAnimationFrame(tick);
+          else el.classList.add('counting');
+        }
+        requestAnimationFrame(tick);
+      }
+      statObs.unobserve(el);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-v').forEach(el=>{
+  el.dataset.val=el.textContent;
+  statObs.observe(el);
+});
+
+/* ─── ROAD DIVIDER REPLAY ON SCROLL ──────────── */
+const roadObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const car=e.target.querySelector('.road-car-anim');
+      if(car){
+        car.style.animation='none';
+        car.offsetHeight; /* force reflow */
+        car.style.animation='roadCarDrive 4s ease-in-out infinite';
+      }
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.road-divider').forEach(el=>roadObs.observe(el));
+
+/* ─── SMOOTH ANCHOR SCROLLING ────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
 });
 </script>
 </body>
