@@ -1327,15 +1327,15 @@ nav.s{
     <div class="hero-inner">
 
       <div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span>Dakar 2026 · Bientôt disponible</div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span>Lancement Dakar · 2026</div>
         <h1 class="hero-h">
-          Transport<br><em>sans commission</em>
-          <span class="muted-line">100% sénégalais · iOS + Android</span>
+          Les chauffeurs perdent<br><em>25% par course.</em>
+          <span class="muted-line">On change ça. 0% commission. Abonnement fixe.</span>
         </h1>
         <p class="hero-p">
-          Yokh Laa connecte chauffeurs et passagers à Dakar.
-          <strong>0% de commission sur chaque course.</strong>
-          Chaque franc gagné vous appartient. Toujours.
+          À Dakar, les plateformes VTC prélèvent jusqu'à <strong>25% sur chaque course</strong>.
+          Yokh Laa remplace la commission par un abonnement fixe de <strong>18 500 FCFA/mois</strong>.
+          Le chauffeur garde tout. Le passager paie moins.
         </p>
         <div class="ctas">
           <button class="btn-g" onclick="openDriver()">
@@ -1352,7 +1352,7 @@ nav.s{
             <div class="av">MD</div><div class="av">AB</div>
             <div class="av">FD</div><div class="av">+</div>
           </div>
-          <p class="proof-t"><strong id="proof-n">1</strong> <span id="proof-label">chauffeur déjà inscrit</span> en liste d'attente</p>
+          <p class="proof-t" id="proof-area">Rejoignez la liste d'attente des chauffeurs</p>
         </div>
       </div>
 
@@ -1408,10 +1408,10 @@ nav.s{
 <div class="stats-band">
   <div class="wrap">
     <div class="stats-row">
-      <div class="stat"><div class="stat-v g">0%</div><div class="stat-l">Commission chauffeur</div></div>
-      <div class="stat"><div class="stat-v g">18 500</div><div class="stat-l">FCFA · tout inclus / mois</div></div>
-      <div class="stat"><div class="stat-v w">3,4 M</div><div class="stat-l">Habitants à Dakar</div></div>
-      <div class="stat"><div class="stat-v w">2026</div><div class="stat-l">Lancement prévu</div></div>
+      <div class="stat"><div class="stat-v g">25%</div><div class="stat-l">Commission prélevée par les concurrents</div></div>
+      <div class="stat"><div class="stat-v g">0%</div><div class="stat-l">Commission Yokh Laa</div></div>
+      <div class="stat"><div class="stat-v w">15 000+</div><div class="stat-l">Chauffeurs VTC actifs à Dakar</div></div>
+      <div class="stat"><div class="stat-v w">3,4 M</div><div class="stat-l">Population de Dakar · Marché cible</div></div>
     </div>
   </div>
 </div>
@@ -1420,8 +1420,8 @@ nav.s{
 <section class="sec" id="chauffeurs">
   <div class="wrap">
     <div class="stag">Pour les chauffeurs</div>
-    <h2 class="sh">Travaillez pour vous,<br>pas pour une plateforme.</h2>
-    <p class="sp">Fini les commissions qui grignotent votre revenu. Un abonnement fixe, et vous gardez le reste.</p>
+    <h2 class="sh">Un chauffeur qui fait 20 courses/jour<br>perd 37 500 F/mois en commissions.</h2>
+    <p class="sp">Avec Yokh Laa, il paie 18 500 FCFA fixe et garde 100% de ses courses. Soit <strong style="color:var(--green)">+19 000 FCFA net/mois</strong> dans sa poche dès le premier jour.</p>
 
     <div class="steps-grid">
       <div class="steps-list" id="stepsEl">
@@ -1490,12 +1490,12 @@ nav.s{
         </div>
         <div class="vpanel" data-v="3">
           <div class="rev-card">
-            <div class="rev-row"><span class="rev-k">Courses du mois</span><span class="rev-v">150 000 FCFA</span></div>
+            <div class="rev-row"><span class="rev-k">Revenus bruts / mois</span><span class="rev-v">150 000 FCFA</span></div>
+            <div class="rev-row"><span class="rev-k">Chez un concurrent (−25%)</span><span class="rev-v r">− 37 500 FCFA</span></div>
             <div class="rev-row"><span class="rev-k">Abonnement Yokh Laa</span><span class="rev-v r">− 18 500 FCFA</span></div>
-            <div class="rev-row"><span class="rev-k">Commission (0%)</span><span class="rev-v g">− 0 FCFA</span></div>
-            <div class="rev-row"><span class="rev-k" style="font-weight:700;color:var(--white)">Votre revenu net</span><span class="rev-v big">131 500 FCFA</span></div>
+            <div class="rev-row"><span class="rev-k" style="font-weight:700;color:var(--white)">Vous gagnez en plus</span><span class="rev-v big">+19 000 FCFA</span></div>
           </div>
-          <div style="font-size:11px;color:var(--dim);text-align:center">vs 112 500 FCFA chez Yango (−25%)</div>
+          <div style="font-size:11px;color:var(--green);text-align:center;font-weight:600">131 500 F net vs 112 500 F chez les concurrents · +17% de revenus</div>
         </div>
       </div>
     </div>
@@ -1517,7 +1517,7 @@ nav.s{
     <div style="text-align:center;margin-bottom:48px">
       <div class="stag">Nouveau service</div>
       <h2 class="sh" style="text-align:center">Dakar <span style="color:var(--green)">↔</span> AIBD</h2>
-      <p class="sp" style="margin:0 auto;text-align:center;max-width:480px">Réservez votre transfert aéroport à l'avance. Chauffeur confirmé, ponctualité garantie.</p>
+      <p class="sp" style="margin:0 auto;text-align:center;max-width:520px">Transfert aéroport à prix fixe, réservé à l'avance. Plus de négociation à la sortie du terminal. <strong>Plateau → AIBD à partir de 15 000 FCFA</strong>, chauffeur confirmé 24h avant.</p>
     </div>
 
     <div class="aibd-grid">
@@ -1604,7 +1604,7 @@ nav.s{
       <div class="navette-left">
         <div class="navette-soon">Bientôt disponible</div>
         <h2 class="sh" style="margin-bottom:16px">Dakar <span style="color:var(--green)">→</span> Régions</h2>
-        <p class="sp" style="margin-bottom:32px">Thiès, Saint-Louis, Ziguinchor, Kaolack, Touba — les navettes interurbaines arrivent sur Yokh Laa. Un chauffeur vérifié, un prix fixe, zéro commission.</p>
+        <p class="sp" style="margin-bottom:32px">Le marché interurbain sénégalais est informel et imprévisible. Yokh Laa organise des navettes Dakar → Thiès (3 500 F), Saint-Louis (8 000 F), Touba (5 000 F) avec prix fixe, chauffeur vérifié et réservation garantie.</p>
 
         <div class="navette-feats">
           <div class="navette-feat">
@@ -1677,8 +1677,8 @@ nav.s{
     <div class="form-grid">
       <div>
         <div class="stag">Liste d'attente</div>
-        <h2 class="sh">Soyez parmi<br>les premiers.</h2>
-        <p class="sp">Les 50 premiers chauffeurs inscrits bénéficient du <strong style="color:var(--green)">premier mois offert.</strong></p>
+        <h2 class="sh">Rejoignez le mouvement<br>avant le lancement.</h2>
+        <p class="sp">Les 50 premiers chauffeurs inscrits bénéficient du <strong style="color:var(--green)">premier mois offert</strong>. Aucun paiement, aucun engagement — juste une place réservée.</p>
         <div class="trust-list">
           <div class="trust-item">
             <div class="ti-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
@@ -1792,12 +1792,14 @@ nav.s{
     <div class="stag">FAQ</div>
     <h2 class="sh">Questions fréquentes</h2>
     <div class="faq-grid">
-      <div class="faq"><button class="faq-q">Combien coûte l'abonnement ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">18 500 FCFA par mois, payable via Wave ou Orange Money. C'est le seul frais. Aucune commission sur les courses, aucun frais caché.</div></div>
-      <div class="faq"><button class="faq-q">Quand l'app sera disponible ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Lancement prévu en 2026 sur App Store et Google Play. Les inscrits en liste d'attente seront notifiés en premier, avec accès prioritaire.</div></div>
-      <div class="faq"><button class="faq-q">Le premier mois est-il gratuit ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Oui. Les 50 premiers chauffeurs inscrits bénéficient du premier mois d'abonnement entièrement offert.</div></div>
-      <div class="faq"><button class="faq-q">Quelles zones sont couvertes ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Au lancement : Plateau, Medina, Parcelles Assainies, Almadies. Expansion rapide vers Pikine, Guédiawaye, puis Thiès et Saint-Louis.</div></div>
-      <div class="faq"><button class="faq-q">Comment les passagers paient-ils ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Les passagers paient directement le chauffeur via Wave, Orange Money ou en espèces. Yokh Laa ne prend aucune commission sur ces transactions.</div></div>
-      <div class="faq"><button class="faq-q">Puis-je me désabonner à tout moment ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Oui, sans préavis et sans frais. L'abonnement est mensuel. Si vous ne renouvelez pas, votre compte est suspendu jusqu'au prochain paiement.</div></div>
+      <div class="faq"><button class="faq-q">Comment Yokh Laa gagne de l'argent sans commission ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Notre modèle repose sur l'abonnement fixe de 18 500 FCFA/mois par chauffeur. Avec 1 000 chauffeurs abonnés, c'est 18,5M FCFA de revenus récurrents mensuels. Le coût d'acquisition est faible car les chauffeurs gagnent plus qu'ailleurs — le bouche-à-oreille fait le reste.</div></div>
+      <div class="faq"><button class="faq-q">Combien coûte l'abonnement ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">18 500 FCFA par mois, payable via Wave ou Orange Money. C'est le seul frais. Un chauffeur qui fait 10 courses/jour à 2 500 F récupère son abonnement en moins d'une journée de travail.</div></div>
+      <div class="faq"><button class="faq-q">Pourquoi un chauffeur choisirait Yokh Laa ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Mathématiquement, dès qu'un chauffeur fait plus de 74 000 FCFA/mois de courses, il gagne plus avec Yokh Laa qu'avec une plateforme à 25% de commission. La majorité des chauffeurs actifs à Dakar font 150 000+ FCFA/mois.</div></div>
+      <div class="faq"><button class="faq-q">Quand l'app sera disponible ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Lancement prévu en 2026. L'app mobile (React Native) et le backend (Fastify + Supabase) sont en développement actif. Les inscrits en liste d'attente auront un accès prioritaire au bêta.</div></div>
+      <div class="faq"><button class="faq-q">Quelles zones sont couvertes au lancement ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Phase 1 : Plateau, Medina, Parcelles Assainies, Almadies, Ouakam. Phase 2 : Pikine, Guédiawaye, Rufisque. Phase 3 : transferts AIBD et navettes interurbaines (Thiès, Saint-Louis, Touba).</div></div>
+      <div class="faq"><button class="faq-q">Comment les passagers paient-ils ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Directement au chauffeur via Wave, Orange Money ou espèces. Yokh Laa ne touche pas à l'argent de la course — c'est ce qui élimine la commission.</div></div>
+      <div class="faq"><button class="faq-q">Le premier mois est-il gratuit ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Oui, pour les 50 premiers chauffeurs. C'est notre stratégie de lancement : construire un noyau de chauffeurs satisfaits qui deviennent ambassadeurs.</div></div>
+      <div class="faq"><button class="faq-q">Puis-je me désabonner à tout moment ?<span class="faq-arr"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a">Oui, sans préavis et sans frais. Pas d'engagement. Si un chauffeur ne renouvelle pas, son compte est simplement suspendu. La rétention se fait par la valeur, pas par la contrainte.</div></div>
     </div>
   </div>
 </section>
@@ -1808,7 +1810,7 @@ nav.s{
     <div class="footer-g">
       <div class="footer-brand">
         <a href="#" class="logo">Yokh<b>Laa</b></a>
-        <p>L'application de transport dakarois sans commission. Conçue et développée au Sénégal par Mamadou Dieng Ba, Developer Full Stack.</p>
+        <p>L'application VTC dakaroise à 0% de commission. Fondée par <strong style="color:var(--white)">Mamadou Dieng Ba</strong>, développeur Full Stack basé à Dakar. Stack : React Native, Fastify, Supabase, Prisma.</p>
         <div class="socials">
           <a class="social" href="https://instagram.com/yokhlaa" target="_blank" rel="noopener" title="Instagram">
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1939,12 +1941,11 @@ const SHEET_URL = '';
 const savedInscrits = JSON.parse(localStorage.getItem('yokhlaa_inscrits') || '[]');
 let count = Math.max(savedInscrits.length, parseInt(localStorage.getItem('yokhlaa_count')||'0',10), 1);
 const liveN=document.getElementById('liveN');
-const proofN=document.getElementById('proof-n');
-const proofLabel=document.getElementById('proof-label');
+const proofArea=document.getElementById('proof-area');
 function updateCount(n){
   count=n;
-  [liveN,proofN].forEach(el=>el.textContent=count);
-  if(proofLabel) proofLabel.textContent=count>1?'chauffeurs déjà inscrits':'chauffeur déjà inscrit';
+  if(liveN) liveN.textContent=count;
+  if(proofArea && count>1) proofArea.innerHTML='<strong>'+count+'</strong> chauffeurs déjà inscrits en liste d\'attente';
 }
 updateCount(count);
 
